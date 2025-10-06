@@ -1,12 +1,27 @@
 
 package views;
 
+import DAO.ConexaoDAO;
+import java.sql.*;
+import javax.swing.*;
+
 
 public class telaPrincipal extends javax.swing.JFrame {
+
+        Connection conexao = null;
 
     
     public telaPrincipal() {
         initComponents();
+        conexao = ConexaoDAO.conector();
+        System.out.println(conexao);
+
+        if (conexao != null) {
+            ImageIcon iconeVerde = new ImageIcon("src/Imagens/conectado.png");
+            lblConexao.setIcon(iconeVerde);
+            lblAtencao.setText("Conectado ao Banco de dados!");
+        }
+            
     }
 
     
@@ -14,6 +29,8 @@ public class telaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblConexao = new javax.swing.JLabel();
+        lblAtencao = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         MenuGerenciar = new javax.swing.JMenu();
         MenuClientes = new javax.swing.JMenuItem();
@@ -26,6 +43,10 @@ public class telaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
         setResizable(false);
+
+        lblConexao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/desconectado.png"))); // NOI18N
+
+        lblAtencao.setText("Desconectado do banco de dados!!!");
 
         MenuGerenciar.setText("Gerenciar");
 
@@ -70,11 +91,24 @@ public class telaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(lblConexao))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblAtencao)))
+                .addContainerGap(533, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(444, Short.MAX_VALUE)
+                .addComponent(lblConexao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAtencao)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -112,5 +146,7 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuPedidos;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JMenuItem MenuSobre;
+    private javax.swing.JLabel lblAtencao;
+    private javax.swing.JLabel lblConexao;
     // End of variables declaration//GEN-END:variables
 }

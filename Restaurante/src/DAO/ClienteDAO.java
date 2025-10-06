@@ -2,12 +2,10 @@ package DAO;
 
 import DAO.ConexaoDAO;
 import DTO.ClienteDTO;
-import views.telaPrincipal;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import views.telaCliente;
-
 
 public class ClienteDAO {
 
@@ -43,7 +41,7 @@ public class ClienteDAO {
     }
 
     public void pesquisar(ClienteDTO objClienteDTO) {
-        String sql = "select * from tb_clientes where id_clientes = ?";
+        String sql = "select * from tb_clientes where id_cliente = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -90,7 +88,7 @@ public class ClienteDAO {
 
     //Método editar
     public void editar(ClienteDTO objClienteDTO) {
-        String sql = "update tb_clientes set nome = ?, telefone = ?, email = ? where id_cliente = ?";
+        String sql = "update tb_clientes set tipo = ?, numeracao = ?, C = ?, quantidade = ? where id_cliente = ?";
         conexao = ConexaoDAO.conector();
         try {
             pst = conexao.prepareStatement(sql);
@@ -112,7 +110,7 @@ public class ClienteDAO {
 
     //Método deletar
     public void deletar(ClienteDTO objClienteDTO) {
-        String sql = "delete from tb_chaves where id_chaves = ?";
+        String sql = "delete from tb_clientes where id_cliente = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -137,5 +135,5 @@ public class ClienteDAO {
         telaCliente.txtTelefone.setText(null);
         telaCliente.txtEmail.setText(null);
     }
-    
+
 }
