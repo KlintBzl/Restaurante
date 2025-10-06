@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class PedidoDTO {
     private int id, idC;
-    private String data;
+    private Date data;
     private double valorTotal;
 
     public int getId() {
@@ -26,10 +26,10 @@ public class PedidoDTO {
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
-    public String getData() {
+    public Date getData() {
         return data;
     }
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
     

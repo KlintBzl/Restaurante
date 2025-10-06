@@ -2,6 +2,7 @@
 package views;
 
 import DAO.ClienteDAO;
+import DTO.ClienteDTO;
 
 public class telaCliente extends javax.swing.JFrame {
 
@@ -57,6 +58,11 @@ public class telaCliente extends javax.swing.JFrame {
         btnListar.setBackground(new java.awt.Color(0, 250, 250));
         btnListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/listar.png"))); // NOI18N
         btnListar.setBorder(null);
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setBackground(new java.awt.Color(250, 250, 0));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Editar.png"))); // NOI18N
@@ -185,7 +191,19 @@ public class telaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefoneActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        int id_chaves = Integer.parseInt(txtId.getText());
+        String nome = txtNome.getText();
+        String telefone = txtTelefone.getText();
+        String email = txtEmail.getText();
+
+        ClienteDTO objClienteDTO = new ClienteDTO();
+        objClienteDTO.setId(id_chaves);
+        objClienteDTO.setNome(nome);
+        objClienteDTO.setTelefone(telefone);
+        objClienteDTO.setEmail(email);
+
+        ClienteDAO objClienteDAO = new ClienteDAO();
+        objClienteDAO.inserirUsuario(objClienteDTO);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
@@ -193,34 +211,20 @@ public class telaCliente extends javax.swing.JFrame {
         cliente.limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(telaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(telaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(telaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(telaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        int id_chaves = Integer.parseInt(txtId.getText());
+        String nome = txtNome.getText();
+        
 
-        /* Create and display the form */
+        ClienteDTO objClienteDTO = new ClienteDTO();
+        objClienteDTO.setId(id_chaves);
+        
+        ClienteDAO objClienteDAO = new ClienteDAO();
+        objClienteDAO.pesquisar(objClienteDTO);
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    public static void main(String args[]) {
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new telaCliente().setVisible(true);

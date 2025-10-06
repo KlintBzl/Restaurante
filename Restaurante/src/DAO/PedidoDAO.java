@@ -26,7 +26,7 @@ public class PedidoDAO {
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, objPedidoDTO.getId());
             pst.setInt(2, objPedidoDTO.getIdC());
-            pst.setString(3, objPedidoDTO.getData());
+            pst.setDate(3, objPedidoDTO.getData());
             pst.setDouble(4, objPedidoDTO.getValorTotal());
             int add  = pst.executeUpdate();
             if (add > 0) {
@@ -56,7 +56,7 @@ public class PedidoDAO {
                 PedidoDTO pedido = new PedidoDTO();
                 pedido.setId(rs.getInt("id_pedido"));
                 pedido.setIdC(rs.getInt("id_cliente"));
-                pedido.setData(rs.getString("data"));
+                pedido.setData(rs.getDate("data"));
                 pedido.setValorTotal(rs.getDouble("valor_total"));
                 lista.add(pedido);
             }
@@ -99,7 +99,7 @@ public class PedidoDAO {
             pst = conexao.prepareStatement(sql);
             pst.setInt(4, objPedidoDTO.getId());
             pst.setInt(3, objPedidoDTO.getIdC());
-            pst.setString(2, objPedidoDTO.getData());
+            pst.setDate(2, objPedidoDTO.getData());
             pst.setDouble(1, objPedidoDTO.getValorTotal());
             int add = pst.executeUpdate();
             if (add > 0) {
