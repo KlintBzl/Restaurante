@@ -31,6 +31,12 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         lblConexao = new javax.swing.JLabel();
         lblAtencao = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         MenuGerenciar = new javax.swing.JMenu();
         MenuClientes = new javax.swing.JMenuItem();
@@ -48,8 +54,59 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         lblAtencao.setText("Desconectado do banco de dados!!!");
 
+        jPanel1.setBackground(new java.awt.Color(200, 200, 200));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Bem-Vindo!");
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Esta é a tela principal do sistema");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Para usufruir de suas funções, acesse");
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("a barra de menu acima");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/talher.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addContainerGap())
+        );
+
         MenuGerenciar.setText("Gerenciar");
 
+        MenuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/pessoinha.png"))); // NOI18N
         MenuClientes.setText("Clientes");
         MenuClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +115,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         });
         MenuGerenciar.add(MenuClientes);
 
+        MenuPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/pedidinho.png"))); // NOI18N
         MenuPedidos.setText("Pedidos");
         MenuPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,17 +128,29 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         MenuAjuda.setText("Ajuda");
 
+        MenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/infinho.png"))); // NOI18N
         MenuSobre.setText("Sobre");
+        MenuSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuSobreActionPerformed(evt);
+            }
+        });
         MenuAjuda.add(MenuSobre);
 
         MenuBar.add(MenuAjuda);
 
         MenuOpcoes.setText("Opções");
 
+        MenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/saidinha.png"))); // NOI18N
         MenuSair.setText("Sair");
         MenuSair.setToolTipText("");
         MenuSair.setSelected(true);
         MenuSair.setVerifyInputWhenFocusTarget(false);
+        MenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuSairActionPerformed(evt);
+            }
+        });
         MenuOpcoes.add(MenuSair);
 
         MenuBar.add(MenuOpcoes);
@@ -99,7 +169,8 @@ public class telaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblAtencao)))
-                .addContainerGap(533, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,6 +180,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAtencao)
                 .addGap(12, 12, 12))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -126,6 +198,19 @@ public class telaPrincipal extends javax.swing.JFrame {
         pedido.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_MenuPedidosActionPerformed
+
+    private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
+        int sair = JOptionPane.showConfirmDialog(null,"Tem certeza que deseja sair","Atenção",JOptionPane.YES_NO_OPTION);
+        if(sair == JOptionPane.YES_OPTION){
+            System.exit(sair);
+        }
+    }//GEN-LAST:event_MenuSairActionPerformed
+
+    private void MenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSobreActionPerformed
+        Sobre sobre = new Sobre();
+        sobre.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_MenuSobreActionPerformed
 
     
     public static void main(String args[]) {
@@ -146,6 +231,12 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuPedidos;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JMenuItem MenuSobre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAtencao;
     private javax.swing.JLabel lblConexao;
     // End of variables declaration//GEN-END:variables

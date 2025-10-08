@@ -42,8 +42,8 @@ public class PedidoDAO {
         }
     }
 
-    public List<PedidoDTO> listar() {
-        List<PedidoDTO> lista = new ArrayList<>();
+    public void listar() {
+        
         String sql = "SELECT p.id_pedido, c.nome AS cliente, p.data_pedido, p.valor_total "
                    + "FROM pedidos p "
                    + "INNER JOIN clientes c ON p.id_cliente = c.id_cliente";
@@ -52,19 +52,23 @@ public class PedidoDAO {
              PreparedStatement pst = conexao.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
 
-            while (rs.next()) {
-                PedidoDTO pedido = new PedidoDTO();
-                pedido.setId(rs.getInt("id_pedido"));
-                pedido.setIdC(rs.getInt("id_cliente"));
-                pedido.setData(rs.getDate("data"));
-                pedido.setValorTotal(rs.getDouble("valor_total"));
-                lista.add(pedido);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null,
+                        "Cliente cadastrado: \n"
+                        + rs.getString(1) + "\n"
+                        + rs.getString(2) + "\n"
+                        + rs.getString(3) + "\n"
+                        + rs.getString(4) );
+                
+                conexao.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado!");
+                limparCampos();
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return lista;
     }
 
 

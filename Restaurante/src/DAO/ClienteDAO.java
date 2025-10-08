@@ -15,8 +15,8 @@ public class ClienteDAO {
 
 
     public void inserirUsuario(ClienteDTO objClienteDTO) {
-        String sql = "insert into tb_clientes (id_cliente, nome, telefone, email)"
-                + " values (?, ?, ?, ?, ?)";
+        String sql = "insert into clientes (id_cliente, nome, telefone, email)"
+                + " values (?, ?, ?, ?)";
         conexao = ConexaoDAO.conector();
         
         
@@ -41,7 +41,7 @@ public class ClienteDAO {
     }
 
     public void pesquisar(ClienteDTO objClienteDTO) {
-        String sql = "select * from tb_clientes where id_cliente = ?";
+        String sql = "select * from clientes where id_cliente = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -64,7 +64,7 @@ public class ClienteDAO {
     }
 
     public void pesquisaAuto() {
-        String sql = "select * from tb_clientes";
+        String sql = "select * from clientes";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -88,14 +88,14 @@ public class ClienteDAO {
 
     //Método editar
     public void editar(ClienteDTO objClienteDTO) {
-        String sql = "update tb_clientes set tipo = ?, numeracao = ?, C = ?, quantidade = ? where id_cliente = ?";
+        String sql = "update clientes set nome = ?, telefone = ?, email = ? where id_cliente = ?";
         conexao = ConexaoDAO.conector();
         try {
             pst = conexao.prepareStatement(sql);
             pst.setInt(4, objClienteDTO.getId());
-            pst.setString(3, objClienteDTO.getNome());
+            pst.setString(3, objClienteDTO.getEmail());
             pst.setString(2, objClienteDTO.getTelefone());
-            pst.setString(1, objClienteDTO.getEmail());
+            pst.setString(1, objClienteDTO.getNome());
             int add = pst.executeUpdate();
             if (add > 0) {
                 JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!");
@@ -110,7 +110,7 @@ public class ClienteDAO {
 
     //Método deletar
     public void deletar(ClienteDTO objClienteDTO) {
-        String sql = "delete from tb_clientes where id_cliente = ?";
+        String sql = "delete from clientes where id_cliente = ?";
         conexao = ConexaoDAO.conector();
 
         try {
