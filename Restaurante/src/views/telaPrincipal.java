@@ -175,7 +175,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(444, Short.MAX_VALUE)
+                .addContainerGap(155, Short.MAX_VALUE)
                 .addComponent(lblConexao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAtencao)
@@ -188,15 +188,15 @@ public class telaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuClientesActionPerformed
+        this.setVisible(false);
         telaCliente cliente = new telaCliente();
         cliente.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_MenuClientesActionPerformed
 
     private void MenuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPedidosActionPerformed
+        this.setVisible(false);
         telaPedido pedido = new telaPedido();
         pedido.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_MenuPedidosActionPerformed
 
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
@@ -207,9 +207,9 @@ public class telaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuSairActionPerformed
 
     private void MenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSobreActionPerformed
+        this.setVisible(false);
         Sobre sobre = new Sobre();
         sobre.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_MenuSobreActionPerformed
 
     

@@ -119,7 +119,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="444" max="32767" attributes="0"/>
+              <EmptySpace pref="155" max="32767" attributes="0"/>
               <Component id="lblConexao" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblAtencao" min="-2" max="-2" attributes="0"/>
